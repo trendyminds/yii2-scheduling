@@ -149,6 +149,7 @@ class Event extends Component
             null,
             null
         );
+
         $process->run();
 
         $this->callAfterCallbacks($app);
