@@ -1,6 +1,7 @@
 {
   "name": "trendyminds/yii2-scheduling",
   "version": "2.0.0",
+  "license": "MIT",
   "description": "Scheduling extension for Yii2 framework",
   "keywords": [
     "yii",
