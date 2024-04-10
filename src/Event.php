@@ -1,10 +1,9 @@
 <?php
 
-namespace omnilight\scheduling;
+namespace trendyminds\scheduling;
 
 use Cron\CronExpression;
 use GuzzleHttp\Client as HttpClient;
-use Symfony\Component\Process\Process;
 use yii\base\Application;
 use yii\base\Component;
 use yii\base\InvalidCallException;
@@ -117,7 +116,7 @@ class Event extends Component
     {
         $this->trigger(self::EVENT_BEFORE_RUN);
         if (count($this->_afterCallbacks) > 0) {
-            $this->runCommandInForeground($app);
+            echo "Running commands in foreground is not supported. Please use the command in the background.";
         } else {
             $this->runCommandInBackground($app);
         }
@@ -132,19 +131,6 @@ class Event extends Component
     protected function mutexName()
     {
         return 'framework/schedule-' . sha1($this->_expression . $this->command);
-    }
-
-    /**
-     * Run the command in the foreground.
-     *
-     * @param Application $app
-     */
-    protected function runCommandInForeground(Application $app)
-    {
-        (new Process(
-            trim($this->buildCommand(), '& '), dirname($app->request->getScriptFile()), null, null, null
-        ))->run();
-        $this->callAfterCallbacks($app);
     }
 
     /**

@@ -1,8 +1,8 @@
 <?php
 
-namespace omnilight\scheduling\Tests;
+namespace trendyminds\scheduling\Tests;
 
-use omnilight\scheduling\Event;
+use trendyminds\scheduling\Event;
 use yii\mutex\Mutex;
 
 class EventTest extends \PHPUnit_Framework_TestCase
