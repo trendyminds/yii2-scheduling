@@ -1,6 +1,6 @@
 <?php
 
-namespace trendyminds\scheduling;
+namespace omnilight\scheduling;
 
 use Yii;
 use yii\base\Component;

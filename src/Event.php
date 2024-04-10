@@ -1,6 +1,6 @@
 <?php
 
-namespace trendyminds\scheduling;
+namespace omnilight\scheduling;
 
 use Cron\CronExpression;
 use GuzzleHttp\Client as HttpClient;
@@ -141,16 +141,9 @@ class Event extends Component
      */
     protected function runCommandInForeground(Application $app)
     {
-        // Process the whole command as string and run it via Symfony Process
-        $process = Process::fromShellCommandline(
-            trim($this->buildCommand(), '& '),
-            dirname($app->request->getScriptFile()),
-            null,
-            null,
-            null
-        );
-        $process->run();
-
+        (new Process(
+            trim($this->buildCommand(), '& '), dirname($app->request->getScriptFile()), null, null, null
+        ))->run();
         $this->callAfterCallbacks($app);
     }
 

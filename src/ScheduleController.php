@@ -1,6 +1,6 @@
 <?php
 
-namespace trendyminds\scheduling;
+namespace omnilight\scheduling;
 use yii\console\Controller;
 use yii\di\Instance;
 
